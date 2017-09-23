@@ -1,34 +1,20 @@
 package com.marcharrison.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by marc on 9/22/17.
  */
 
-@Entity
+@Entity @IdClass(SkillId.class)
 public class Skill {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
-
     private String name;
-
+    @Id
     private String level;
-
+    @Id
     private String category;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
