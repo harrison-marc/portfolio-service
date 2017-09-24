@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(path="/api")
+@CrossOrigin
 public class SkillController {
 
     @Autowired
     SkillRepository skillRepository;
 
+    @CrossOrigin(origins = {"http://localhost:3000", "https://marc-harrison-portfolio.herokuapp.com/"})
     @GetMapping(path="/skill/add") // Map ONLY GET Requests
     public @ResponseBody String addNewSkill (@RequestParam String category, @RequestParam String level, @RequestParam String name) {
         Skill skill = new Skill();
@@ -27,12 +29,7 @@ public class SkillController {
         return "Saved";
     }
 
-    @GetMapping(path="/skill")
-    public @ResponseBody Iterable<Skill> getSkillByCategory() {
-        // This returns a JSON or XML with the skills
-        return skillRepository.findAll();
-    }
-
+    @CrossOrigin
     @GetMapping(path="/skill/all")
     public @ResponseBody Iterable<Skill> getAllSkills() {
         // This returns a JSON or XML with the skills
