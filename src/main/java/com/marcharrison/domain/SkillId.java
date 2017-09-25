@@ -7,6 +7,5 @@ import java.io.Serializable;
  */
 public class SkillId implements Serializable{
     String name;
-    String level;
     String category;
 }

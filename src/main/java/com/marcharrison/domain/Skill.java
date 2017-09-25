@@ -17,12 +17,12 @@ public class Skill {
 
     @Id
     private String name;
-    @Id
     private String level;
     @Id
     private String category;
 
     @CreatedDate
+    @GeneratedValue
     @Column(name="created_date", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
