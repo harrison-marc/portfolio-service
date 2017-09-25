@@ -11,24 +11,23 @@ import java.util.Date;
  * Created by marc on 9/22/17.
  */
 
-@Entity
-@IdClass(SkillId.class)
+@Entity @IdClass(SkillId.class)
 @EntityListeners(AuditingEntityListener.class)
 public class Skill {
 
     @Id
     private String name;
-    private String level;
     @Id
     private String category;
+    private String level;
 
     @CreatedDate
-    @Column(name = "created_date", updatable = false)
+    @Column(name="created_date", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
     @LastModifiedDate
-    @Column(name = "modified_date")
+    @Column(name="modified_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModified;
 
