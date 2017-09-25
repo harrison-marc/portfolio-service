@@ -21,19 +21,6 @@ public class Skill {
     private String category;
     private String level;
 
-    @CreatedDate
-    @Column(name="created_date", updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
-
-    @LastModifiedDate
-    @Column(name="modified_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModified;
-
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
     public String getName() {
         return name;
     }
@@ -57,24 +44,4 @@ public class Skill {
     public void setCategory(String category) {
         this.category = category;
     }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getLastModified() {
-        return lastModified;
-    }
-
-    public void setLastModified(Date lastModified) {
-        this.lastModified = lastModified;
-    }
-
-    public Integer getId() { return id; }
-
-    public void setId(Integer id) { this.id = id; }
 }
