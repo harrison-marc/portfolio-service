@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by marc on 9/22/17.
  */
@@ -31,7 +33,9 @@ public class SkillController {
 
     @CrossOrigin(origins = {"http://localhost:3000", "https://marc-harrison-portfolio.herokuapp.com/"})
     @GetMapping(path="/skill/delete/all") // Map ONLY GET Requests
-    public @ResponseBody String deleteSkill () {
+    public @ResponseBody String deleteAllSkills () {
+        Iterable<Skill> skills = getAllSkills();
+        skills.forEach(skill -> skillRepository.delete(skill));
         skillRepository.deleteAll();
         return "Deleted all skills";
     }
