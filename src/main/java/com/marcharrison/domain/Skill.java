@@ -11,7 +11,8 @@ import java.util.Date;
  * Created by marc on 9/22/17.
  */
 
-@Entity @IdClass(SkillId.class)
+@Entity
+@IdClass(SkillId.class)
 @EntityListeners(AuditingEntityListener.class)
 public class Skill {
 
@@ -22,15 +23,17 @@ public class Skill {
     private String category;
 
     @CreatedDate
-    @GeneratedValue
-    @Column(name="created_date", updatable = false)
+    @Column(name = "created_date", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
     @LastModifiedDate
-    @Column(name="modified_date")
+    @Column(name = "modified_date")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModified;
+
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     public String getName() {
         return name;
@@ -71,4 +74,8 @@ public class Skill {
     public void setLastModified(Date lastModified) {
         this.lastModified = lastModified;
     }
+
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
 }

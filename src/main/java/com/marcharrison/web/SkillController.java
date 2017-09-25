@@ -34,8 +34,6 @@ public class SkillController {
     @CrossOrigin(origins = {"http://localhost:3000", "https://marc-harrison-portfolio.herokuapp.com/"})
     @GetMapping(path="/skill/delete/all") // Map ONLY GET Requests
     public @ResponseBody String deleteAllSkills () {
-        Iterable<Skill> skills = getAllSkills();
-        skills.forEach(skill -> skillRepository.delete(skill));
         skillRepository.deleteAll();
         return "Deleted all skills";
     }
