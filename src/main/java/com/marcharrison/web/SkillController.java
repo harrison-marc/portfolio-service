@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.validation.Valid;
 
 /**
  * Created by marc on 9/22/17.
  */
 
-@Controller
+@RestController
 @RequestMapping(path="/api")
 @CrossOrigin
 public class SkillController {
@@ -21,18 +21,14 @@ public class SkillController {
     SkillRepository skillRepository;
 
     @CrossOrigin(origins = {"http://localhost:3000", "https://marc-harrison-portfolio.herokuapp.com/"})
-    @GetMapping(path="/skill/add") // Map ONLY GET Requests
-    public @ResponseBody String addNewSkill (@RequestParam String category, @RequestParam String level, @RequestParam String name) {
-        Skill skill = new Skill();
-        skill.setCategory(category);
-        skill.setLevel(level);
-        skill.setName(name);
+    @PostMapping(path="/skill/add") // Map ONLY GET Requests
+    public @ResponseBody String addNewSkill (@Valid @RequestBody Skill skill) {
         skillRepository.save(skill);
-        return "Saved";
+        return "Added skill " + skill.toString();
     }
 
     @CrossOrigin(origins = {"http://localhost:3000", "https://marc-harrison-portfolio.herokuapp.com/"})
-    @GetMapping(path="/skill/delete/all") // Map ONLY GET Requests
+    @DeleteMapping(path="/skill/all") // Map ONLY GET Requests
     public @ResponseBody String deleteAllSkills () {
         skillRepository.deleteAll();
         return "Deleted all skills";
@@ -44,7 +40,5 @@ public class SkillController {
         // This returns a JSON or XML with the skills
         return skillRepository.findAll();
     }
-
-
 
 }
