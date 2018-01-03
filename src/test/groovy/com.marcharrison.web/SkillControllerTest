@@ -1,0 +1,21 @@
+package com.marcharrison.web
+
+import org.junit.Before
+import spock.lang.Specification
+
+class SkillControllerTest extends Specification {
+
+    @Before
+    def init() {
+
+    }
+
+    def "Test retrieving all skills"() {
+        given:
+
+        when:
+        then:
+            1 == 1
+    }
+
+}
